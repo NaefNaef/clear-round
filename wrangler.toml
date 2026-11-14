@@ -1,0 +1,17 @@
+name = "clear-round"
+main = "src/worker.js"
+compatibility_date = "2025-10-01"
+
+# Die Spielseite (public/index.html) wird direkt ausgeliefert.
+[assets]
+directory = "./public"
+binding = "ASSETS"
+
+# Live-Rennen und Bestenliste laufen in einem Durable Object.
+[[durable_objects.bindings]]
+name = "RACE"
+class_name = "RaceRoom"
+
+[[migrations]]
+tag = "v1"
+new_sqlite_classes = ["RaceRoom"]
